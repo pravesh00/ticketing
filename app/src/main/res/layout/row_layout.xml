@@ -10,173 +10,111 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
 
-    <TextView
-
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-
-    <TextView
-
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-
-    <TextView
-
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-    <TextView
-
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-    <TextView
-
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-    <TextView
-
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-    <TextView
-
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-    <TextView
-
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-
-    <TextView
-        android:id="@+id/column_text_2"
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-
-    <TextView
-        android:id="@+id/column_text_3"
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-
-    <TextView
-        android:id="@+id/column_text_4"
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-    <TextView
-        android:id="@+id/column_text_5"
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
+        android:clickable="true"
+        android:checked="true"
+        android:enabled="false"
+        android:focusable="true"
+        android:text="@string/space" />
+    <CheckBox
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
-    <TextView
-        android:id="@+id/column_text_6"
+    <CheckBox
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:layout_weight="1"
-        android:background="@drawable/button_outline"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="@string/space" />
-    <TextView
-        android:id="@+id/column_text_7"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_weight="1"
-        android:background="@drawable/button_outline"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/space" />
