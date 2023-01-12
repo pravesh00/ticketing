@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ticketing</string>
+    <string name="space">  </string>
 </resources>
