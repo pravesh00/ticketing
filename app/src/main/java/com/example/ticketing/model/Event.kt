@@ -5,7 +5,6 @@ import androidx.room.Dao
 import androidx.room.PrimaryKey
 
 
-@Dao
-data class Event(@PrimaryKey var eventId:String,@ColumnInfo(name="name") var name:String,@ColumnInfo(name="description") var description:String) {
+data class Event(var eventId:String,var name:String,var description:String, var typeEvent:String, var photo:String) {
 
 }

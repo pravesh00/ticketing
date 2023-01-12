@@ -1,18 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+    </data>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="14"
+        android:orientation="horizontal">
+       <CheckBox
+           android:id="@+id/chkComedy"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:layout_marginRight="20sp"
+           android:textSize="16sp"
+           android:checked="true"
+           android:text="Comedy Show" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <CheckBox
+            android:id="@+id/chkMovie"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20sp"
+            android:textSize="16sp"
+            android:checked="true"
+            android:text="Movies" />
+        <CheckBox
+            android:id="@+id/chkPlay"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="16sp"
+            android:checked="true"
+            android:text="Play" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/recyclerEvents"
+        tools:listitem="@layout/event_layout"
+        android:layout_height="match_parent" />
+</LinearLayout>
+</layout>
