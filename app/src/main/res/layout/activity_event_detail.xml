@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EventDetailActivity">
+    <ImageView
+        android:id="@+id/imgPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        android:layout_marginBottom="20sp"
+        />
+    <TextView
+        android:id="@+id/txtName"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="20sp"
+        android:textColor="@color/black"
+        android:text="Rab ne bna di jodi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:id="@+id/txtType"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:padding="10sp"
+        android:layout_marginLeft="10sp"
+        android:textColor="@color/black"
+        android:text="Rab ne bna di jodi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:layout_marginBottom="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDesc"
+        android:textSize="18sp"
+        android:paddingLeft="20sp"
+        android:textColor="@color/black"
+        android:text="Rab ne bna di jodi"
+        />
+    <TextView
+        android:layout_marginBottom="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDate"
+        android:textStyle="bold"
+        android:gravity="right"
+        android:textSize="20sp"
+        android:paddingRight="20sp"
+        android:textColor="@color/black"
+        android:text="9:00 am to 12:00 pm"
+        />
+    <include
+        layout="@layout/activity_seats"
+        ></include>
+    <TextView
+        android:layout_marginBottom="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtx"
+        android:textStyle="italic"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:paddingRight="20sp"
+        android:textColor="@color/black"
+        android:text="Screen this side"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20sp"
+        android:paddingHorizontal="20sp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:gravity="left"
+            android:textSize="20sp"
+            android:paddingRight="20sp"
+            android:textColor="@color/black"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="Tickets : 2"
+            />
+        <Button
+            android:layout_width="150sp"
+            android:layout_height="50sp"
+            android:text="Book"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>
+    </ScrollView>
+</layout>
