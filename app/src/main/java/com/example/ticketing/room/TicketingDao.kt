@@ -36,8 +36,6 @@ interface TicketingDao {
     @Query("Select * from event where typeEvent =:param1")
     fun getAllEvents(param1:String):List<Event>
 
-    @Query("Select * from event")
-    fun getAllEvents(param1:String, param2:String, param3:String):List<Event>
 
 
 }

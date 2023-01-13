@@ -31,6 +31,8 @@ abstract class TicketingDatabase:RoomDatabase() {
             TicketingDatabase::class.java,
             DB_NAME
         ).allowMainThreadQueries().build()
+
+
     }
 
 }

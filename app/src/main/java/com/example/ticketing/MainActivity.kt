@@ -3,6 +3,7 @@ package com.example.ticketing
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -35,9 +36,14 @@ class MainActivity : AppCompatActivity() {
             list.clear()
             list.addAll(it)
             adapter.notifyDataSetChanged()
+            binding.refresh.isRefreshing=false
         }
-        //eventView.prePopulateEventData()
+//        eventView.clearDatabase()
+//        eventView.prePopulateEventData()
         eventView.updateEventData()
+
+        var m = Array(10) {Array(15) {0} }
+        Log.d("sampleData",getStringFromList(m))
 
 
         fun filterList(){
@@ -69,6 +75,10 @@ class MainActivity : AppCompatActivity() {
         this.setSupportActionBar(binding.toolbarTop)
         binding.toolbarTop.subtitle = "Today's Shows"
 
+        binding.refresh.setOnRefreshListener {
+            eventView.updateEventData()
+        }
+
 
     }
 
@@ -93,5 +103,13 @@ class MainActivity : AppCompatActivity() {
             // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
+    }
+    fun getStringFromList(m:Array<Array<Int>>): String {
+        var list= ArrayList<String>()
+        for(i in 0..9) {
+            var str =m[i].joinToString(separator = ":")
+            list.add(str)
+        }
+        return list.joinToString(separator = ",")
     }
 }
