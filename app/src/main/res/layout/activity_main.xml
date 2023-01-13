@@ -4,16 +4,23 @@
     <data>
 
     </data>
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:id="@+id/toolbarTop"
+        android:layout_weight="0"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_weight="14"
+        android:layout_weight="6"
         android:orientation="horizontal">
        <CheckBox
            android:id="@+id/chkComedy"

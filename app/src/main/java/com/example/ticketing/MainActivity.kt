@@ -1,9 +1,15 @@
 package com.example.ticketing
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Index.Order
 import com.example.ticketing.adapter.EventAdapter
 import com.example.ticketing.databinding.ActivityEventsBinding
 import com.example.ticketing.databinding.ActivityMainBinding
@@ -54,6 +60,31 @@ class MainActivity : AppCompatActivity() {
             filterList()
         }
 
+        this.setSupportActionBar(binding.toolbarTop)
 
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.bottomnavmenu,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.filter -> {
+            // User chose the "Print" item
+            Toast.makeText(this,"Filter selected",Toast.LENGTH_LONG).show()
+            true
+        }
+        R.id.order ->{
+            startActivity(Intent(this,OrdersActivity::class.java))
+            true
+        }
+
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
     }
 }
