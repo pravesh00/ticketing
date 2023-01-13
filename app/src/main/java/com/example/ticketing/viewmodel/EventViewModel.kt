@@ -17,6 +17,13 @@ class EventViewModel(
         list.postValue(lst)
     }
 
+    fun updateEventData(param:String){
+        list.postValue(repo.getAllEvents(param))
+    }
+    fun updateEventData(param1:String,param2:String){
+        list.postValue(repo.getAllEvents(param1,param2))
+    }
+
     fun prePopulateEventData(){
         val lst= ArrayList<Event>()
         var seating= "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0,0:0:0:0:0:0:0:0:0:0:0:0:0:0:0,0:0:0:0:0:0:0:0:0:0:0:0:0:0:0,0:0:0:0:0:0:0:0:0:0:0:0:0:0:0,0:0:0:0:0:0:0:0:0:0:0:0:0:0:0,0:0:0:0:0:0:0:0:0:0:0:0:0:0:0,0:0:0:0:0:0:0:0:0:0:0:0:0:0:0,0:0:0:0:0:0:0:0:0:0:0:0:0:0:0,0:0:0:0:0:0:0:0:0:0:0:0:0:0:0,0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"

@@ -36,7 +36,6 @@ class EventDetailActivity : AppCompatActivity() {
         binding.txtName.setText(event.name)
         binding.txtType.setText(event.typeEvent)
         var linearLayout = binding.lnrTable
-        var relativeLayout = binding.relativeEvent
         var progressBar = ProgressDialog(this)
         progressBar.setTitle("Loading")
         progressBar.setMessage("Work in Progress")

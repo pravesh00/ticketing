@@ -12,42 +12,50 @@ import com.example.ticketing.adapter.OrderAdapter
 import com.example.ticketing.databinding.ActivityMainBinding
 import com.example.ticketing.databinding.ActivityOrdersBinding
 import com.example.ticketing.model.OrderDetails
+import com.example.ticketing.room.TicketingDatabase
+import com.example.ticketing.room.TicketingRepository
+import com.example.ticketing.viewmodel.OrderViewModel
 
 class OrdersActivity : AppCompatActivity() {
     lateinit var binding: ActivityOrdersBinding
+    private lateinit var ticketingDatabase: TicketingDatabase
+    private lateinit var repo: TicketingRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this, R.layout.activity_orders)
+        ticketingDatabase= TicketingDatabase(this)
+        repo= TicketingRepository(TicketingDatabase(applicationContext))
+
+        var orderViewModel = OrderViewModel(repo)
         val orders = ArrayList<OrderDetails>()
-        orders.add(OrderDetails("12","Confirmed","122","Rab ne bna di jodi","","Movie","https://i.imgur.com/CxvVAcK.jpg","","3:2",
-        "",""))
-        var adapter = OrderAdapter(orders)
+        orderViewModel.updateOrderData()
+
+
+        var adapter = OrderAdapter(orders,orderViewModel)
         binding.recyclerOrders.adapter = adapter
         binding.recyclerOrders.layoutManager = LinearLayoutManager(this)
 
         this.setSupportActionBar(binding.toolbarTop)
         binding.toolbarTop.subtitle = "Your Orders"
 
+        orderViewModel.list.observe(this){
+            orders.clear()
+            orders.addAll(it)
+            adapter.notifyDataSetChanged()
+        }
+
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.bottomnavmenu,menu)
+        menuInflater.inflate(R.menu.order_menu,menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.filter -> {
-            // User chose the "Print" item
+        R.id.Filter -> {
             Toast.makeText(this,"Filter selected", Toast.LENGTH_LONG).show()
             true
         }
-        R.id.order ->{
-            Toast.makeText(this,"Order selected", Toast.LENGTH_LONG).show()
-            true
-        }
-
         else -> {
-            // If we got here, the user's action was not recognized.
-            // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
     }

@@ -1,5 +1,6 @@
 package com.example.ticketing
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ticketing.adapter.EventAdapter
 import com.example.ticketing.databinding.ActivityMainBinding
+import com.example.ticketing.databinding.FilterLayoutEventBinding
 import com.example.ticketing.model.Event
 import com.example.ticketing.room.TicketingDatabase
 import com.example.ticketing.room.TicketingRepository
@@ -20,12 +22,22 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding:ActivityMainBinding
     private lateinit var ticketingDatabase: TicketingDatabase
     private lateinit var repo: TicketingRepository
+    private lateinit var dialogBox:Dialog
+    lateinit var dialogBinding:FilterLayoutEventBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this, R.layout.activity_main)
         ticketingDatabase= TicketingDatabase(this)
         repo= TicketingRepository(TicketingDatabase(applicationContext))
         var list = ArrayList<Event>()
+
+        dialogBox= Dialog(this)
+
+        dialogBinding= FilterLayoutEventBinding.inflate(layoutInflater)
+        dialogBox.setContentView(dialogBinding.root)
+        dialogBox.setTitle("Filter Options")
+        dialogBox.setCancelable(true)
+
 
         var adapter = EventAdapter(list)
         binding.recyclerEvents.adapter=adapter
@@ -42,8 +54,27 @@ class MainActivity : AppCompatActivity() {
 //        eventView.prePopulateEventData()
         eventView.updateEventData()
 
-        var m = Array(10) {Array(15) {0} }
-        Log.d("sampleData",getStringFromList(m))
+        dialogBinding.btnFilter.setOnClickListener {
+            if(dialogBinding.chkComedy.isChecked && dialogBinding.chkMovie.isChecked && dialogBinding.chkPlay.isChecked){
+                eventView.updateEventData()
+            }else if(dialogBinding.chkComedy.isChecked && dialogBinding.chkMovie.isChecked){
+                eventView.updateEventData("Comedy Show","Movie")
+            }else if(dialogBinding.chkComedy.isChecked && dialogBinding.chkPlay.isChecked){
+                eventView.updateEventData("Comedy Show","Play")
+            }else if(dialogBinding.chkPlay.isChecked && dialogBinding.chkMovie.isChecked){
+                eventView.updateEventData("Movie","Play")
+            }else if(dialogBinding.chkComedy.isChecked){
+                eventView.updateEventData("Comedy Show")
+
+            }else if(dialogBinding.chkPlay.isChecked){
+                eventView.updateEventData("Play")
+            }else if(dialogBinding.chkMovie.isChecked){
+                eventView.updateEventData("Movie")
+            }else{
+                eventView.updateEventData()
+            }
+            dialogBox.cancel()
+        }
 
 
         fun filterList(){
@@ -62,15 +93,7 @@ class MainActivity : AppCompatActivity() {
 //            adapter.notifyDataSetChanged()
 
         }
-        binding.chkComedy.setOnClickListener{
-            filterList()
-        }
-        binding.chkMovie.setOnClickListener {
-            filterList()
-        }
-        binding.chkPlay.setOnClickListener {
-            filterList()
-        }
+
 
         this.setSupportActionBar(binding.toolbarTop)
         binding.toolbarTop.subtitle = "Today's Shows"
@@ -78,6 +101,7 @@ class MainActivity : AppCompatActivity() {
         binding.refresh.setOnRefreshListener {
             eventView.updateEventData()
         }
+
 
 
     }
@@ -89,8 +113,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.filter -> {
-            // User chose the "Print" item
-            Toast.makeText(this,"Filter selected",Toast.LENGTH_LONG).show()
+           // Toast.makeText(this,"Filter selected",Toast.LENGTH_LONG).show()
+            dialogBox.show()
             true
         }
         R.id.order ->{
@@ -99,8 +123,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         else -> {
-            // If we got here, the user's action was not recognized.
-            // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
     }

@@ -25,7 +25,7 @@ class EventAdapter(var list:List<Event>):RecyclerView.Adapter<EventAdapter.ViewH
         holder.binding.txtName.setText(event.name)
         holder.binding.txtType.setText(event.typeEvent)
         Glide.with(holder.itemView.context).load(event.photo)
-            .placeholder(R.drawable.button_outline)
+
             .centerCrop()
             .into(holder.binding.imgPhoto)
         holder.binding.eventView.setOnClickListener{

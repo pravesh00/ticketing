@@ -10,8 +10,9 @@ import com.example.ticketing.databinding.EventLayoutBinding
 import com.example.ticketing.databinding.OrderDetailsItemBinding
 import com.example.ticketing.model.Order
 import com.example.ticketing.model.OrderDetails
+import com.example.ticketing.viewmodel.OrderViewModel
 
-class OrderAdapter(private val orders:ArrayList<OrderDetails>):RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
+class OrderAdapter(private val orders:ArrayList<OrderDetails>,private val viewmodel:OrderViewModel):RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
     inner class ViewHolder(val binding: OrderDetailsItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,6 +34,11 @@ class OrderAdapter(private val orders:ArrayList<OrderDetails>):RecyclerView.Adap
             holder.binding.txtStatus.setTextColor(Color.parseColor("Red"))
         }
         holder.binding.txtseats.text = order.orderSeats
+
+        holder.binding.btnCancel.setOnClickListener {
+            viewmodel.cancelTicket(order.orderId,order.orderSeats,order.seating,order.eventId)
+
+        }
     }
 
     override fun getItemCount(): Int {
