@@ -1,11 +1,11 @@
 package com.example.ticketing
 
+import android.R.string
 import android.os.Bundle
+import android.text.TextUtils.split
+import android.util.Log
 import android.widget.CheckBox
 import android.widget.LinearLayout
-import android.widget.TableLayout
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
@@ -58,6 +58,52 @@ class EventDetailActivity : AppCompatActivity() {
             linearLayout.addView(newlinear)
         }
 
-
     }
+}
+
+
+//Type conversion ti store in
+fun getListFromString(str:String): Array<Array<Int>> {
+    var m = Array(10) {Array(15) {0} }
+    var list:List<String>  = str.split(",")
+    for(i in 0..9){
+        var cur=list[i]
+        var lst:List<String> = cur.split(":")
+        for(j in 0..14){
+            m[i][j]= lst[j].toInt()
+        }
+    }
+    return m
+}
+
+fun getStringFromList(m:Array<Array<Int>>): String {
+    var list= ArrayList<String>()
+    for(i in 0..9) {
+        var str =m[i].joinToString(separator = ":")
+        list.add(str)
+    }
+    return list.joinToString(separator = ",")
+}
+
+fun getSeatsListFromString(str:String): ArrayList<ArrayList<Int>> {
+    var m =ArrayList<ArrayList<Int>>()
+    var list:List<String>  = str.split(",")
+    for ( i in list){
+        var lst= i.split(":")
+        var t = ArrayList<Int>()
+        for (j in lst){
+            t.add(j.toInt())
+        }
+        m.add(t)
+    }
+    return m
+}
+
+fun getStringFromSeatList(m:ArrayList<ArrayList<Int>>): String {
+    var list= ArrayList<String>()
+    for(i in m) {
+        var str =i.joinToString(separator = ":")
+        list.add(str)
+    }
+    return list.joinToString(separator = ",")
 }

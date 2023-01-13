@@ -1,7 +1,9 @@
 package com.example.ticketing.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ticketing.databinding.EventLayoutBinding
@@ -23,6 +25,14 @@ class OrderAdapter(private val orders:ArrayList<OrderDetails>):RecyclerView.Adap
         holder.binding.txtType.text = order.typeEvent
         holder.binding.txtStatus.text= order.status
         Glide.with(holder.binding.root.context).load(order.photo).centerCrop().into(holder.binding.imgPhoto)
+        if(order.status=="Confirmed"){
+            holder.binding.btnCancel.isVisible = true
+            holder.binding.txtStatus.setTextColor(Color.parseColor("#4C9A3A"))
+        }else{
+            holder.binding.btnCancel.isVisible = false
+            holder.binding.txtStatus.setTextColor(Color.parseColor("Red"))
+        }
+        holder.binding.txtseats.text = order.orderSeats
     }
 
     override fun getItemCount(): Int {

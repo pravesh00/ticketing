@@ -19,12 +19,14 @@ class OrdersActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this, R.layout.activity_orders)
         val orders = ArrayList<OrderDetails>()
-        orders.add(OrderDetails("12","Booked","122","Rab ne bna di jodi","","Movie","https://i.imgur.com/CxvVAcK.jpg"))
+        orders.add(OrderDetails("12","Confirmed","122","Rab ne bna di jodi","","Movie","https://i.imgur.com/CxvVAcK.jpg","","3:2",
+        "",""))
         var adapter = OrderAdapter(orders)
         binding.recyclerOrders.adapter = adapter
         binding.recyclerOrders.layoutManager = LinearLayoutManager(this)
 
         this.setSupportActionBar(binding.toolbarTop)
+        binding.toolbarTop.subtitle = "Your Orders"
 
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
