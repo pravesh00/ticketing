@@ -1,5 +1,3 @@
-# ticketing
-
 # Event booking mobile app
 
 ## Tech Stack Used:
