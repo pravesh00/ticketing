@@ -12,7 +12,27 @@ class OrderViewModel(
     val list = MutableLiveData<List<OrderDetails>>()
 
     fun updateOrderData(){
-        val lst:List<OrderDetails> = repo.getAllOrders()
+        val lst:List<OrderDetails> = repo.getAllOrders().reversed()
+        list.postValue(lst)
+    }
+    fun updateOrderData(param:String){
+        val lst:List<OrderDetails> = repo.getAllOrders(param).reversed()
+        list.postValue(lst)
+    }
+    fun updateOrderData(param1:String,param2: String){
+        val lst:List<OrderDetails> = repo.getAllOrders(param1,param2).reversed()
+        list.postValue(lst)
+    }
+    fun updateOrderDataStatus(status:String){
+        val lst:List<OrderDetails> = repo.getAllOrdersStatus(status).reversed()
+        list.postValue(lst)
+    }
+    fun updateOrderDataStatus(status:String,param:String){
+        val lst:List<OrderDetails> = repo.getAllOrdersStatus(status,param).reversed()
+        list.postValue(lst)
+    }
+    fun updateOrderDataStatus(status:String,param1:String,param2: String){
+        val lst:List<OrderDetails> = repo.getAllOrdersStatus(status,param1,param2).reversed()
         list.postValue(lst)
     }
 
@@ -30,27 +50,6 @@ class OrderViewModel(
         }catch (e:Exception){
             Log.d("failure",e.message.toString())
         }
-    }
-
-    fun getStringFromList(m:Array<Array<Int>>): String {
-        var list= ArrayList<String>()
-        for(i in 0..9) {
-            var str =m[i].joinToString(separator = ":")
-            list.add(str)
-        }
-        return list.joinToString(separator = ",")
-    }
-    fun getListFromString(str:String): Array<Array<Int>> {
-        var m = Array(10) {Array(15) {0} }
-        var list:List<String>  = str.split(",")
-        for(i in 0..9){
-            var cur=list[i]
-            var lst:List<String> = cur.split(":")
-            for(j in 0..14){
-                m[i][j]= lst[j].toInt()
-            }
-        }
-        return m
     }
 
     fun getStringFromSeatList(m:ArrayList<ArrayList<Int>>): String {

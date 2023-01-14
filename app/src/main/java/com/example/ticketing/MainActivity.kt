@@ -76,33 +76,12 @@ class MainActivity : AppCompatActivity() {
             dialogBox.cancel()
         }
 
-
-        fun filterList(){
-//            list1.clear()
-//            for( i in list){
-//                if(i.typeEvent=="Comedy Show" && binding.chkComedy.isChecked){
-//                    list1.add(i)
-//                }
-//                if(i.typeEvent=="Movie" && binding.chkMovie.isChecked){
-//                    list1.add(i)
-//                }
-//                if(i.typeEvent=="Play" && binding.chkPlay.isChecked){
-//                    list1.add(i)
-//                }
-//            }
-//            adapter.notifyDataSetChanged()
-
-        }
-
-
         this.setSupportActionBar(binding.toolbarTop)
         binding.toolbarTop.subtitle = "Today's Shows"
 
         binding.refresh.setOnRefreshListener {
             eventView.updateEventData()
         }
-
-
 
     }
 
@@ -113,7 +92,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.filter -> {
-           // Toast.makeText(this,"Filter selected",Toast.LENGTH_LONG).show()
             dialogBox.show()
             true
         }
@@ -121,17 +99,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this,OrdersActivity::class.java))
             true
         }
-
         else -> {
             super.onOptionsItemSelected(item)
         }
     }
-    fun getStringFromList(m:Array<Array<Int>>): String {
-        var list= ArrayList<String>()
-        for(i in 0..9) {
-            var str =m[i].joinToString(separator = ":")
-            list.add(str)
-        }
-        return list.joinToString(separator = ",")
-    }
+
 }

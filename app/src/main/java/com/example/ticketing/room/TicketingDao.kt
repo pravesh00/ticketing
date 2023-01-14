@@ -21,8 +21,23 @@ interface TicketingDao {
     @Query("Update ordersdata set status='Cancelled' where orderId = :id")
     fun cancelOrder(id:String)
 
-    @Query("Select * from ordersdata o JOIN event e ON o.eventId = e.eventId")
+    @Query("Select * from ordersdata o JOIN event e ON o.eventId = e.eventId where status =:status")
+    fun getAllOrdersStatus(status:String): List<OrderDetails>
+
+    @Query("Select * from ordersdata o JOIN event e ON o.eventId = e.eventId ")
     fun getAllOrders(): List<OrderDetails>
+
+    @Query("Select * from ordersdata o JOIN event e ON o.eventId = e.eventId where status =:status and typeEvent=:param")
+    fun getAllOrdersStatus(status:String,param:String): List<OrderDetails>
+
+    @Query("Select * from ordersdata o JOIN event e ON o.eventId = e.eventId where status =:status and typeEvent=:param1 or typeEvent=:param2")
+    fun getAllOrdersStatus(status:String,param1:String,param2:String): List<OrderDetails>
+
+    @Query("Select * from ordersdata o JOIN event e ON o.eventId = e.eventId where typeEvent=:param")
+    fun getAllOrders(param:String): List<OrderDetails>
+
+    @Query("Select * from ordersdata o JOIN event e ON o.eventId = e.eventId where typeEvent=:param1 or typeEvent=:param2")
+    fun getAllOrders(param1:String,param2:String): List<OrderDetails>
 
     @Insert
     fun insertAllValues(lst:ArrayList<Event>)
