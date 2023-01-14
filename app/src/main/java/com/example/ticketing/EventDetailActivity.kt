@@ -122,26 +122,3 @@ class EventDetailActivity : AppCompatActivity() {
 
     }
 }
-
-fun getSeatsListFromString(str:String): ArrayList<ArrayList<Int>> {
-    var m =ArrayList<ArrayList<Int>>()
-    var list:List<String>  = str.split(",")
-    for ( i in list){
-        var lst= i.split(":")
-        var t = ArrayList<Int>()
-        for (j in lst){
-            t.add(j.toInt())
-        }
-        m.add(t)
-    }
-    return m
-}
-
-fun getStringFromSeatList(m:ArrayList<ArrayList<Int>>): String {
-    var list= ArrayList<String>()
-    for(i in m) {
-        var str =i.joinToString(separator = ":")
-        list.add(str)
-    }
-    return list.joinToString(separator = ",")
-}
