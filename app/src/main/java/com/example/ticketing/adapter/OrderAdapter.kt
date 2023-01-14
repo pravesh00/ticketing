@@ -1,15 +1,18 @@
 package com.example.ticketing.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ticketing.databinding.EventLayoutBinding
 import com.example.ticketing.databinding.OrderDetailsItemBinding
 import com.example.ticketing.model.Order
 import com.example.ticketing.model.OrderDetails
+import com.example.ticketing.viewmodel.OrderViewModel
 
-class OrderAdapter(private val orders:ArrayList<OrderDetails>):RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
+class OrderAdapter(private val orders:ArrayList<OrderDetails>,private val viewmodel:OrderViewModel):RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
     inner class ViewHolder(val binding: OrderDetailsItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,6 +26,19 @@ class OrderAdapter(private val orders:ArrayList<OrderDetails>):RecyclerView.Adap
         holder.binding.txtType.text = order.typeEvent
         holder.binding.txtStatus.text= order.status
         Glide.with(holder.binding.root.context).load(order.photo).centerCrop().into(holder.binding.imgPhoto)
+        if(order.status=="Confirmed"){
+            holder.binding.btnCancel.isVisible = true
+            holder.binding.txtStatus.setTextColor(Color.parseColor("#4C9A3A"))
+        }else{
+            holder.binding.btnCancel.isVisible = false
+            holder.binding.txtStatus.setTextColor(Color.parseColor("Red"))
+        }
+        holder.binding.txtseats.text = order.orderSeats
+
+        holder.binding.btnCancel.setOnClickListener {
+            viewmodel.cancelTicket(order.orderId,order.orderSeats,order.seating,order.eventId)
+
+        }
     }
 
     override fun getItemCount(): Int {

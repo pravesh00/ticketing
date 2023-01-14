@@ -16,43 +16,19 @@
         android:id="@+id/toolbarTop"
         android:layout_weight="0"
         />
-    <LinearLayout
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_weight="6"
-        android:orientation="horizontal">
-       <CheckBox
-           android:id="@+id/chkComedy"
-           android:layout_width="wrap_content"
-           android:layout_height="match_parent"
-           android:layout_marginRight="20sp"
-           android:textSize="16sp"
-           android:checked="true"
-           android:text="Comedy Show" />
-
-        <CheckBox
-            android:id="@+id/chkMovie"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="20sp"
-            android:textSize="16sp"
-            android:checked="true"
-            android:text="Movies" />
-        <CheckBox
-            android:id="@+id/chkPlay"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="16sp"
-            android:checked="true"
-            android:text="Play" />
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:id="@+id/refresh"
+        android:layout_weight="1">
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:id="@+id/recyclerEvents"
         tools:listitem="@layout/event_layout"
         android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </LinearLayout>
 </layout>
