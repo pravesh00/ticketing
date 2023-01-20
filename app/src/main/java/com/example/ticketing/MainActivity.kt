@@ -47,11 +47,13 @@ class MainActivity : AppCompatActivity() {
         eventView.list.observe(this) {
             list.clear()
             list.addAll(it)
+            if(it.size==0){
+                eventView.prePopulateEventData()
+            }
             adapter.notifyDataSetChanged()
             binding.refresh.isRefreshing=false
         }
-//        eventView.clearDatabase()
-//        eventView.prePopulateEventData()
+
         eventView.updateEventData()
 
         dialogBinding.btnFilter.setOnClickListener {
