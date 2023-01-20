@@ -3,7 +3,6 @@ package com.example.ticketing.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.ticketing.getSeatsListFromString
 import com.example.ticketing.model.Order
 import com.example.ticketing.room.TicketingRepository
 import kotlin.random.Random

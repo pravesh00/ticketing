@@ -14,6 +14,7 @@ class EventViewModel(
 
     fun updateEventData(){
         val lst:List<Event> = repo.getAllEvents()
+
         list.postValue(lst)
     }
 
@@ -33,6 +34,7 @@ class EventViewModel(
         lst.add(Event("D1","Zakir Khan Standup special","In the not too distant future, Todd Hewitt discovers Viola, a mysterious girl who crash lands on his planet, where all the women have disappeared and the men are afflicted by \\\"the Noise\\\" - a force that puts all their thoughts on display. In this dangerous landscape, Viola`s life is threatened - and as Todd vows to protect her, he will have to discover his own inner power and unlock the planet`s dark secrets.","Comedy Show","https://www.dailypioneer.com/uploads/2021/story/images/big/zakir-khan-on-most-interesting-thing-about-being-stand-up-comic-2021-03-22.jpg",seating,""))
         lst.add(Event("E1","Whats calling ur name?","In the not too distant future, Todd Hewitt discovers Viola, a mysterious girl who crash lands on his planet, where all the women have disappeared and the men are afflicted by \\\"the Noise\\\" - a force that puts all their thoughts on display. In this dangerous landscape, Viola`s life is threatened - and as Todd vows to protect her, he will have to discover his own inner power and unlock the planet`s dark secrets.","Play","https://i.imgur.com/hEVn8dT.jpg",seating,""))
         repo.insertallevents(lst)
+        updateEventData()
     }
 
     fun clearDatabase(){
